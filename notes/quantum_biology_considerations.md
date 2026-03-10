@@ -124,81 +124,115 @@ In neurons, candidate structures for quantum pockets:
 
 ---
 
-## 4  Experimental Plan — Probing Quantum Effects in Organoids
+## 4  Experimental Plan — Fully Virtual / Remote
+
+> [!IMPORTANT]
+> This plan is designed for a **private researcher without lab access**.
+> All experiments use remote wetware platforms, computational simulation,
+> or publicly available datasets. No BSL-2 lab, no culture facility needed.
 
 ### 4.1  Where We Are (TRL Assessment)
 
-| Aspect | Technology Readiness |
-|---|---|
-| Growing brain organoids | **TRL 7–8** — commercial (Cortical Labs, FinalSpark) |
-| MEA recording from organoids | **TRL 7** — standard protocols |
-| Quantum sensing of neural activity | **TRL 3–4** — lab demonstrations |
-| Detecting quantum coherence in neural tissue | **TRL 1–2** — theoretical, few experiments |
-| Manipulating quantum states in neurons | **TRL 1** — purely theoretical |
+| Aspect | Technology Readiness | Our Access |
+|---|---|---|
+| Growing brain organoids | **TRL 7–8** — commercial | ✅ Via Cortical Cloud / FinalSpark |
+| MEA recording from organoids | **TRL 7** — standard | ✅ Via remote platforms (data download) |
+| Quantum sensing of neural activity | **TRL 3–4** — lab demos | ❌ Requires physical lab |
+| Detecting quantum coherence in neural tissue | **TRL 1–2** — theoretical | ✅ Computational modelling |
+| Manipulating quantum states in neurons | **TRL 1** — theoretical | ✅ Simulation only |
 
 ### 4.2  Proposed Experimental Programme
 
-#### Phase 1 — Computational (Now, No Lab Needed)
+#### Phase 1 — Computational Modelling (Now)
 
 **Objective**: Model whether quantum coherence in microtubules/Posner molecules could influence spiking dynamics.
 
+**Status**: *We can start immediately — all tools available.*
+
 | Experiment | Tool | What We Learn |
 |---|---|---|
-| **1a** Simulate LIF network with quantum-modified synaptic delays | BRIAN2 | Does stochastic tunnelling-delay distribution change network computation? |
-| **1b** Model Posner molecule formation/dissolution dynamics | Python + QuTiP | Can spin coherence survive long enough to affect calcium signalling? |
-| **1c** Simulate ENAQT in a model ion channel | QuTiP / Qiskit | Could noise-assisted transport apply to ion permeation? |
-| **1d** Reservoir computing with quantum noise injection | BRIAN2 | Does quantum-scale noise injection improve computational capacity? |
+| **1a** LIF network with quantum-modified synaptic delays | BRIAN2 | Does a tunnelling-delay distribution change network computation vs classical fixed delays? |
+| **1b** Posner molecule spin dynamics | QuTiP | Can ³¹P nuclear spin coherence survive ms-scale in a thermal bath model? |
+| **1c** ENAQT in a model ion channel | QuTiP / Qiskit | Could noise-assisted quantum transport apply to K⁺/Na⁺ permeation? |
+| **1d** Reservoir computing: quantum vs classical noise | BRIAN2 | Does quantum-scale noise injection improve computational capacity of a reservoir? |
+| **1e** Cryptochrome radical pair in neuron context | QuTiP | Model radical pair spin dynamics at 37°C with realistic dephasing |
 
-**Requirements**: Python, BRIAN2, QuTiP, NumPy. *We have this already.*
+**Requirements**: Python, BRIAN2, QuTiP, NumPy, matplotlib. ✅ *Installed in project venv.*
 
-#### Phase 2 — Wet Lab Preparation (3–6 months)
+Additional installs needed:
+```bash
+pip install qutip qiskit
+```
 
-**Objective**: Establish organoid culture and baseline electrophysiology.
+#### Phase 2 — Remote Wetware Access (1–3 months)
 
-| Item | Specification | Est. Cost |
+**Objective**: Run experiments on real neurons without owning a lab.
+
+| Platform | Access | Cost | What You Get |
+|---|---|---|---|
+| **Cortical Cloud** (Cortical Labs) | Python SDK, Jupyter in browser | ~USD 300/week | Stimulate & record from ~800K human neurons on CL1 hardware |
+| **FinalSpark Neuroplatform** | REST API, web interface | Monthly subscription | Access to 16 brain organoids on MEAs |
+| **CL SDK Simulator** | GitHub (free) | Free | Offline API-compatible mock — test code before paying for cloud time |
+
+**Recommended workflow:**
+1. Develop experiment scripts locally using the **CL SDK Simulator** (free)
+2. Validate the pipeline end-to-end with simulated data
+3. Book **Cortical Cloud** time (1–2 weeks initially) to run on real neurons
+4. Download spike data for offline analysis
+
+**Virtual experiments we can run remotely:**
+
+| Experiment | Platform | What We Measure |
 |---|---|---|
-| **Multi-Electrode Array system** | Maxwell Biosystems MaxOne or Axion Maestro Pro | €30,000–80,000 |
-| **iPSC culture facility** | BSL-2 lab, CO² incubator, laminar flow hood | €15,000–30,000 (if not existing) |
-| **Organoid differentiation kit** | STEMdiff Cerebral Organoid Kit (STEMCELL Tech) | ~€2,000/batch |
-| **Calcium imaging** | GCaMP6 viral transduction + fluorescence microscope | €20,000–50,000 |
-| **Media & consumables** | Matrigel, growth factors, media (12 months) | ~€5,000 |
+| **2a** Baseline spiking statistics | Cortical Cloud | Firing rates, burst patterns, inter-spike intervals — establish what "normal" looks like |
+| **2b** Stimulation-response mapping | Cortical Cloud | How do neurons respond to different electrode patterns? Build input/output transfer functions |
+| **2c** Reservoir computing benchmark | Cortical Cloud | Can the biological culture solve NARMA-10 or wave-form classification? Compare to our BRIAN2 simulation |
+| **2d** Temporal learning test | Cortical Cloud | Free Energy Principle feedback — does the culture learn to minimise prediction error (like DishBrain/Pong)? |
+| **2e** Multi-session plasticity | FinalSpark | Do organoids retain learned patterns across days? (FinalSpark cultures last ~100 days) |
 
-*Alternative*: Use **Cortical Cloud** (~$300/week) to run on Cortical Labs' hardware remotely. No lab needed.
+#### Phase 3 — Computational Quantum Probes (3–12 months)
 
-#### Phase 3 — Quantum Probe Experiments (6–18 months)
+**Objective**: Since we can't physically measure quantum effects in organoids, we probe computationally — test whether quantum-modified models better explain *observed* organoid data than purely classical models.
 
-**Objective**: Test whether quantum effects are detectable in organoid neural activity.
-
-| Experiment | Method | What We Detect |
+| Experiment | Method | What We Learn |
 |---|---|---|
-| **3a** Isotope effect on spiking | Replace H₂O with D₂O in organoid media → measure firing rate changes | If proton tunnelling contributes to ion channel kinetics, D₂O will show anomalous kinetic isotope effect (KIE >7) |
-| **3b** Magnetic field sensitivity | Apply weak (~50 µT, Earth-strength) static/oscillating magnetic fields → measure network activity changes | If radical pair mechanisms operate in neurons, fields should modulate firing patterns |
-| **3c** Anaesthetic interference | Apply gases known to disrupt microtubule quantum states (if Orch-OR is correct) at sub-anaesthetic concentrations | Graded dose-response below clinical threshold would support quantum contribution |
-| **3d** Lithium isotope fractionation | Compare ⁶Li vs ⁷Li effects on organoid activity | Fisher's Posner molecule theory predicts ⁶Li (spin-1) and ⁷Li (spin-3/2) should differ in disrupting entanglement |
-| **3e** NV-centre magnetometry | Diamond NV-centre chips placed under organoid culture → detect single-neuron magnetic signatures | Achieve quantum-limited sensitivity to neural currents (~pT/√Hz) |
+| **3a** Classical vs quantum-delay model fitting | Fit BRIAN2 models (classical synaptic delays) and quantum-modified models (tunnelling delay distributions) to the real Cortical Cloud data from Phase 2. Compare goodness-of-fit. | If quantum-delay models fit better → indirect evidence for quantum contributions |
+| **3b** Analyse published D₂O neuronal data | Search literature for existing heavy water experiments on neurons (they exist from anaesthesia research). Re-analyse for anomalous KIE signatures. | Leverage existing data — no lab needed |
+| **3c** Posner molecule population model | Simulate Ca²⁺/phosphate dynamics in a neural context. Predict: if Posner entanglement is real, what statistical signature would appear in calcium waves? | Generate falsifiable predictions for future lab tests |
+| **3d** Information-theoretic analysis of organismal data | Apply transfer entropy & mutual information measures to Cortical Cloud spike trains. Compare to predictions from quantum vs classical stochastic models. | Do real neurons carry more information than classical stochastic models predict? |
+| **3e** Radical pair magnetometry simulation | Model whether Earth-strength magnetic fields (~50 µT) could modulate neural cryptochrome activity. Compare model predictions with any publicly available data. | Sets up the theoretical framework even without field apparatus |
+| **3f** Quantum walk on microtubule lattice | Simulate quantum vs classical random walk on a 2D microtubule lattice (13 protofilaments × length). Compare transport efficiency. | Does the microtubule geometry favour quantum transport like FMO chromophore geometry? |
 
-#### Phase 4 — Quantum-Enhanced Organoid Computing (18+ months)
+**Key insight**: We're not proving quantum effects exist in neurons (that requires a lab). We're building **predictive models** that distinguish quantum from classical contributions, so that when lab data becomes available, we already know what to look for.
 
-**Objective**: If Phase 3 shows positive results, engineer organoids to exploit quantum effects.
+#### Phase 4 — Publication & Collaboration (12+ months)
 
-| Direction | Approach |
+**Objective**: Contribute findings to the community; partner with labs that have physical access.
+
+| Activity | How |
 |---|---|
-| **Enhanced tunnelling** | Modify ion channel protein geometry via CRISPR to optimise tunnelling distances |
-| **Posner engineering** | Control phosphate/calcium concentrations to maximise Posner formation |
-| **Quantum readout** | Use NV-centre arrays as quantum-coherent readout of organoid state |
-| **Hybrid quantum-bio** | Interface organoid with superconducting qubit via microwave coupling |
+| **Preprint on arXiv/bioRxiv** | Publish computational results from Phases 1–3 |
+| **Open-source simulation toolkit** | Release our BRIAN2/QuTiP models as a Python package for others to use |
+| **Collaborate with wet labs** | Contact groups running organoid experiments (JHU OI, Cortical Labs, UCSC) — offer computational support in exchange for data access |
+| **Join Organoid Intelligence community** | [organoidintelligence.org](https://organoidintelligence.org) — connect with researchers |
+| **Propose experiments** | Write up Phase 3 predictions as testable hypotheses that wet labs can run (D₂O, ⁶Li/⁷Li, magnetic field experiments) |
 
-### 4.3  Equipment Summary — What We Need
+### 4.3  Budget — What We Actually Need
 
-**Minimum viable setup (Phase 1 + partial Phase 3):**
+**Total estimated cost for a private researcher:**
 
-| Category | Equipment | Purpose |
+| Category | Item | Cost |
 |---|---|---|
-| **Computation** | Existing cluster + BRIAN2/QuTiP | Simulation experiments |
-| **Remote wetware** | Cortical Cloud subscription | Real neuron access, no lab needed |
-| **Magnetic field** | Helmholtz coil pair (~€500 DIY / €3,000 commercial) | Experiment 3b |
-| **Heavy water** | D₂O (99.9%, ~€200/L from Sigma-Aldrich) | Experiment 3a |
-| **Analysis** | Python + standard data science stack | All experiments |
+| **Software** | BRIAN2, QuTiP, Qiskit, Python | **Free** (open source) |
+| **Hardware** | Existing compute cluster | **Already owned** |
+| **Remote wetware** | CL SDK Simulator | **Free** (GitHub) |
+| **Remote wetware** | Cortical Cloud (2 weeks initial) | ~€550 |
+| **Remote wetware** | FinalSpark (1 month) | ~€500–1,500 (estimate) |
+| **Literature** | Sci-Hub / arXiv / PubMed (open access) | **Free** |
+| **Publication** | arXiv / bioRxiv preprint | **Free** |
+| **Total** | | **€550 – €2,100** |
+
+This is remarkably accessible. Five years ago this research would have required a €200K+ lab. Today the remote platforms make it possible from a home office.
 
 ---
 
