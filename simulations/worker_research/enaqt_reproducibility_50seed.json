@@ -1,0 +1,2008 @@
+{
+  "job": "enaqt_reproducibility_50seed",
+  "timestamp": "2026-03-22T16:04:24",
+  "elapsed_s": 0.3,
+  "n_configs": 250,
+  "results": [
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 0,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 1,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 2,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 3,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 4,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 5,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 6,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 7,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 8,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 9,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 10,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 11,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 12,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 13,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 14,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 15,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 16,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 17,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 18,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 19,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 20,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 21,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 22,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 23,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 24,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 25,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 26,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 27,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 28,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 29,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 30,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 31,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 32,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 33,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 34,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 35,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 36,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 37,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 38,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 39,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 40,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 41,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 42,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 43,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 44,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 45,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 46,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 47,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 48,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 50,
+      "seed": 49,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 0,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 1,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 2,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 3,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 4,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 5,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 6,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 7,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 8,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 9,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 10,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 11,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 12,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 13,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 14,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 15,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 16,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 17,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 18,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 19,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 20,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 21,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 22,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 23,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 24,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 25,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 26,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 27,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 28,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 29,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 30,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 31,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 32,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 33,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 34,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 35,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 36,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 37,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 38,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 39,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 40,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 41,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 42,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 43,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 44,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 45,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 46,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 47,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 48,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.4,
+      "hz": 50,
+      "seed": 49,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 0,
+      "q_rate": 0.03,
+      "c_rate": 0.08,
+      "delta": -0.06
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 1,
+      "q_rate": 0.04,
+      "c_rate": 0.07,
+      "delta": -0.03
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 2,
+      "q_rate": 0.03,
+      "c_rate": 0.12,
+      "delta": -0.09
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 3,
+      "q_rate": 0.12,
+      "c_rate": 0.11,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 4,
+      "q_rate": 0.08,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 5,
+      "q_rate": 0.12,
+      "c_rate": 0.07,
+      "delta": 0.04
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 6,
+      "q_rate": 0.09,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 7,
+      "q_rate": 0.07,
+      "c_rate": 0.05,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 8,
+      "q_rate": 0.07,
+      "c_rate": 0.09,
+      "delta": -0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 9,
+      "q_rate": 0.07,
+      "c_rate": 0.05,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 10,
+      "q_rate": 0.07,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 11,
+      "q_rate": 0.08,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 12,
+      "q_rate": 0.05,
+      "c_rate": 0.07,
+      "delta": -0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 13,
+      "q_rate": 0.07,
+      "c_rate": 0.03,
+      "delta": 0.03
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 14,
+      "q_rate": 0.07,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 15,
+      "q_rate": 0.08,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 16,
+      "q_rate": 0.03,
+      "c_rate": 0.07,
+      "delta": -0.04
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 17,
+      "q_rate": 0.07,
+      "c_rate": 0.08,
+      "delta": -0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 18,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 19,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": -0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 20,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 21,
+      "q_rate": 0.07,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 22,
+      "q_rate": 0.03,
+      "c_rate": 0.11,
+      "delta": -0.08
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 23,
+      "q_rate": 0.1,
+      "c_rate": 0.06,
+      "delta": 0.04
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 24,
+      "q_rate": 0.07,
+      "c_rate": 0.11,
+      "delta": -0.03
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 25,
+      "q_rate": 0.04,
+      "c_rate": 0.13,
+      "delta": -0.09
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 26,
+      "q_rate": 0.03,
+      "c_rate": 0.03,
+      "delta": -0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 27,
+      "q_rate": 0.05,
+      "c_rate": 0.07,
+      "delta": -0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 28,
+      "q_rate": 0.08,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 29,
+      "q_rate": 0.13,
+      "c_rate": 0.03,
+      "delta": 0.1
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 30,
+      "q_rate": 0.06,
+      "c_rate": 0.04,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 31,
+      "q_rate": 0.12,
+      "c_rate": 0.07,
+      "delta": 0.04
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 32,
+      "q_rate": 0.01,
+      "c_rate": 0.11,
+      "delta": -0.1
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 33,
+      "q_rate": 0.08,
+      "c_rate": 0.1,
+      "delta": -0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 34,
+      "q_rate": 0.04,
+      "c_rate": 0.04,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 35,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 36,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 37,
+      "q_rate": 0.04,
+      "c_rate": 0.05,
+      "delta": -0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 38,
+      "q_rate": 0.11,
+      "c_rate": 0.05,
+      "delta": 0.06
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 39,
+      "q_rate": 0.03,
+      "c_rate": 0.07,
+      "delta": -0.04
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 40,
+      "q_rate": 0.1,
+      "c_rate": 0.04,
+      "delta": 0.06
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 41,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 42,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 43,
+      "q_rate": 0.03,
+      "c_rate": 0.1,
+      "delta": -0.08
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 44,
+      "q_rate": 0.03,
+      "c_rate": 0.03,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 45,
+      "q_rate": 0.06,
+      "c_rate": 0.03,
+      "delta": 0.03
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 46,
+      "q_rate": 0.06,
+      "c_rate": 0.04,
+      "delta": 0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 47,
+      "q_rate": 0.07,
+      "c_rate": 0.09,
+      "delta": -0.02
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 48,
+      "q_rate": 0.08,
+      "c_rate": 0.05,
+      "delta": 0.03
+    },
+    {
+      "barrier": 0.12,
+      "hz": 200,
+      "seed": 49,
+      "q_rate": 0.04,
+      "c_rate": 0.05,
+      "delta": -0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 0,
+      "q_rate": 0.03,
+      "c_rate": 0.08,
+      "delta": -0.06
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 1,
+      "q_rate": 0.04,
+      "c_rate": 0.07,
+      "delta": -0.03
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 2,
+      "q_rate": 0.03,
+      "c_rate": 0.12,
+      "delta": -0.09
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 3,
+      "q_rate": 0.12,
+      "c_rate": 0.11,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 4,
+      "q_rate": 0.08,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 5,
+      "q_rate": 0.12,
+      "c_rate": 0.07,
+      "delta": 0.04
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 6,
+      "q_rate": 0.09,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 7,
+      "q_rate": 0.07,
+      "c_rate": 0.05,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 8,
+      "q_rate": 0.07,
+      "c_rate": 0.09,
+      "delta": -0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 9,
+      "q_rate": 0.07,
+      "c_rate": 0.05,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 10,
+      "q_rate": 0.07,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 11,
+      "q_rate": 0.08,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 12,
+      "q_rate": 0.05,
+      "c_rate": 0.07,
+      "delta": -0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 13,
+      "q_rate": 0.07,
+      "c_rate": 0.03,
+      "delta": 0.03
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 14,
+      "q_rate": 0.07,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 15,
+      "q_rate": 0.08,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 16,
+      "q_rate": 0.03,
+      "c_rate": 0.07,
+      "delta": -0.04
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 17,
+      "q_rate": 0.07,
+      "c_rate": 0.08,
+      "delta": -0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 18,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.0
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 19,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": -0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 20,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.0
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 21,
+      "q_rate": 0.07,
+      "c_rate": 0.06,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 22,
+      "q_rate": 0.03,
+      "c_rate": 0.11,
+      "delta": -0.08
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 23,
+      "q_rate": 0.1,
+      "c_rate": 0.06,
+      "delta": 0.04
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 24,
+      "q_rate": 0.07,
+      "c_rate": 0.11,
+      "delta": -0.03
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 25,
+      "q_rate": 0.04,
+      "c_rate": 0.13,
+      "delta": -0.09
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 26,
+      "q_rate": 0.03,
+      "c_rate": 0.03,
+      "delta": -0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 27,
+      "q_rate": 0.05,
+      "c_rate": 0.07,
+      "delta": -0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 28,
+      "q_rate": 0.08,
+      "c_rate": 0.07,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 29,
+      "q_rate": 0.13,
+      "c_rate": 0.03,
+      "delta": 0.1
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 30,
+      "q_rate": 0.06,
+      "c_rate": 0.04,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 31,
+      "q_rate": 0.12,
+      "c_rate": 0.07,
+      "delta": 0.04
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 32,
+      "q_rate": 0.01,
+      "c_rate": 0.11,
+      "delta": -0.1
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 33,
+      "q_rate": 0.08,
+      "c_rate": 0.1,
+      "delta": -0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 34,
+      "q_rate": 0.04,
+      "c_rate": 0.04,
+      "delta": 0.0
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 35,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 36,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 37,
+      "q_rate": 0.04,
+      "c_rate": 0.05,
+      "delta": -0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 38,
+      "q_rate": 0.11,
+      "c_rate": 0.05,
+      "delta": 0.06
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 39,
+      "q_rate": 0.03,
+      "c_rate": 0.07,
+      "delta": -0.04
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 40,
+      "q_rate": 0.1,
+      "c_rate": 0.04,
+      "delta": 0.06
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 41,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 42,
+      "q_rate": 0.07,
+      "c_rate": 0.07,
+      "delta": 0.01
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 43,
+      "q_rate": 0.03,
+      "c_rate": 0.1,
+      "delta": -0.08
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 44,
+      "q_rate": 0.03,
+      "c_rate": 0.03,
+      "delta": 0.0
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 45,
+      "q_rate": 0.06,
+      "c_rate": 0.03,
+      "delta": 0.03
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 46,
+      "q_rate": 0.06,
+      "c_rate": 0.04,
+      "delta": 0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 47,
+      "q_rate": 0.07,
+      "c_rate": 0.09,
+      "delta": -0.02
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 48,
+      "q_rate": 0.08,
+      "c_rate": 0.05,
+      "delta": 0.03
+    },
+    {
+      "barrier": 1.5,
+      "hz": 200,
+      "seed": 49,
+      "q_rate": 0.04,
+      "c_rate": 0.05,
+      "delta": -0.01
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 0,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 1,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 2,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 3,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 4,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 5,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 6,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 7,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 8,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 9,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 10,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 11,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 12,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 13,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 14,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 15,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 16,
+      "q_rate": 0.0,
+      "c_rate": 0.01,
+      "delta": -0.01
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 17,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 18,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 19,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 20,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 21,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 22,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 23,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 24,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 25,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 26,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 27,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 28,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 29,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 30,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 31,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 32,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 33,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 34,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 35,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 36,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 37,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 38,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 39,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 40,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 41,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 42,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 43,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 44,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 45,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 46,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 47,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 48,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    },
+    {
+      "barrier": 0.5,
+      "hz": 100,
+      "seed": 49,
+      "q_rate": 0.0,
+      "c_rate": 0.0,
+      "delta": 0.0
+    }
+  ]
+}
