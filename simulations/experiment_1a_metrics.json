@@ -33,7 +33,7 @@
   },
   "cross_synchrony": 0.4903918777753653,
   "timing": {
-    "classical_elapsed_s": 0.5959289073944092,
-    "quantum_elapsed_s": 0.5598864555358887
+    "classical_elapsed_s": 49.512168407440186,
+    "quantum_elapsed_s": 49.93545579910278
   }
 }
