@@ -1,6 +1,6 @@
 # Biological Computing Simulator — Interface
 
-Interactive web interface for simulating and exploring the 11 quantum biology experiments from the _Quantum Effects in Biological Computing_ research programme.
+Interactive web interface for simulating and exploring the 12 quantum biology experiments from the _Quantum Effects in Biological Computing_ research programme.
 
 ## Quick Start
 

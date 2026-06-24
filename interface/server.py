@@ -3,7 +3,7 @@
 server.py — Biological Computing Simulator Backend
 ====================================================
 
-FastAPI server that wraps the 11 quantum biology experiments
+FastAPI server that wraps the 12 quantum biology experiments
 with REST endpoints for interactive simulation control.
 
 Endpoints:
@@ -121,6 +121,7 @@ EXPERIMENTS = {
             "transit_time_ps": {"default": 5.0, "min": 1.0, "max": 50.0, "step": 1.0, "unit": "ps", "label": "Transit time"},
             "n_dephasing": {"default": 120, "min": 20, "max": 200, "step": 10, "unit": "points", "label": "Dephasing sweep points", "quick": 30},
         },
+        "live": {"endpoint": "/api/enaqt/sweep", "kind": "sweep", "map": {"bridge_height_cm": "bridge_height_cm", "n_dephasing": "n_points"}},
     },
     "1d": {
         "id": "1d",
@@ -129,7 +130,7 @@ EXPERIMENTS = {
         "category": "Reservoir Computing",
         "tools": "NumPy",
         "description": "Echo State Network comparing Gaussian vs Cauchy (quantum-like heavy-tailed) noise. Tests whether fat-tailed noise preserves memory capacity at high amplitudes.",
-        "key_result": "Quantum (Cauchy) noise preserves MC 5.7× better at high amplitude",
+        "key_result": "Cauchy (quantum) noise retains ~1.3× higher MC than Gaussian at σ=1.0 (0.59 vs 0.47)",
         "script": "experiment_1d_reservoir_noise.py",
         "metrics_file": "experiment_1d_metrics.json",
         "image_file": "experiment_1d_results.png",
@@ -138,6 +139,7 @@ EXPERIMENTS = {
             "spectral_radius": {"default": 0.9, "min": 0.1, "max": 1.5, "step": 0.05, "unit": "", "label": "Spectral radius ρ"},
             "n_steps": {"default": 5000, "min": 1000, "max": 20000, "step": 1000, "unit": "steps", "label": "Simulation steps", "quick": 2000},
         },
+        "live": {"endpoint": "/api/reservoir/quick", "kind": "reservoir", "map": {"n_reservoir": "n_reservoir", "spectral_radius": "spectral_radius", "n_steps": "n_steps"}},
     },
     "1e": {
         "id": "1e",
@@ -146,7 +148,7 @@ EXPERIMENTS = {
         "category": "Bridge Experiment",
         "tools": "QuTiP + ESN",
         "description": "BRIDGE: Uses P₄ from ENAQT model (Exp 1c) as synaptic release probability in reservoir computer. Tests if MC co-peaks with ENAQT.",
-        "key_result": "MC peak coincides with ENAQT peak (Spearman ρ = 0.99)",
+        "key_result": "MC peak coincides with ENAQT peak (Spearman ρ = 0.93, Pearson r = 0.99)",
         "script": "experiment_1e_enaqt_reservoir.py",
         "metrics_file": "experiment_1e_metrics.json",
         "image_file": "experiment_1e_results.png",
@@ -155,6 +157,7 @@ EXPERIMENTS = {
             "spectral_radius": {"default": 0.9, "min": 0.1, "max": 1.5, "step": 0.05, "unit": "", "label": "Spectral radius ρ"},
             "n_dephasing_sweep": {"default": 40, "min": 10, "max": 100, "step": 5, "unit": "points", "label": "Dephasing sweep points", "quick": 15},
         },
+        "live": {"endpoint": "/api/reservoir/quick", "kind": "reservoir", "map": {"n_reservoir": "n_reservoir", "spectral_radius": "spectral_radius"}},
     },
     "2a": {
         "id": "2a",
@@ -243,7 +246,7 @@ EXPERIMENTS = {
         "category": "Falsifiable Predictions",
         "tools": "NumPy",
         "description": "Tests whether ~1 mT external magnetic field can modulate Posner ³¹P spin coherence and downstream neural dynamics.",
-        "key_result": "Uniform B-field: ω_L/J = 345× but Δτ ≈ 0 (important null)",
+        "key_result": "ω_L/J = 345×; 1 mT reduces ³¹P τc by 38.9% (250→153 ms)",
         "script": "experiment_3b_magnetic_field.py",
         "metrics_file": "experiment_3b_metrics.json",
         "image_file": "experiment_3b_results.png",
@@ -290,8 +293,11 @@ async def get_metrics(exp_id: str):
     if not metrics_path.exists():
         raise HTTPException(404, f"No pre-computed metrics for experiment {exp_id}")
 
-    with open(metrics_path) as f:
-        return json.load(f)
+    try:
+        with open(metrics_path) as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        raise HTTPException(500, f"Corrupted metrics file for experiment {exp_id}")
 
 
 @app.get("/api/results/{exp_id}/image")
@@ -328,7 +334,10 @@ async def run_experiment(exp_id: str, req: RunRequest):
 
     try:
         t0 = time.time()
-        result = subprocess.run(
+        # Offload the blocking subprocess off the event loop so a long-running
+        # experiment does not freeze every other request (event-loop starvation).
+        result = await asyncio.to_thread(
+            subprocess.run,
             [python_exec, str(script_path)],
             capture_output=True,
             text=True,
@@ -337,16 +346,24 @@ async def run_experiment(exp_id: str, req: RunRequest):
         )
         elapsed = time.time() - t0
 
+        # Only count metrics as fresh if the file was (re)written by THIS run;
+        # otherwise a crashed or no-op run would silently return stale results.
         metrics_path = SIMULATIONS_DIR / exp["metrics_file"]
-        if metrics_path.exists():
-            with open(metrics_path) as f:
-                metrics = json.load(f)
-        else:
-            metrics = {}
+        metrics = {}
+        metrics_fresh = False
+        if metrics_path.exists() and metrics_path.stat().st_mtime >= t0:
+            try:
+                with open(metrics_path) as f:
+                    metrics = json.load(f)
+                metrics_fresh = True
+            except json.JSONDecodeError:
+                metrics = {}
 
+        ok = result.returncode == 0 and metrics_fresh
         return {
-            "status": "success" if result.returncode == 0 else "error",
+            "status": "success" if ok else "error",
             "elapsed_s": round(elapsed, 1),
+            "metrics_fresh": metrics_fresh,
             "stdout": result.stdout[-2000:] if result.stdout else "",
             "stderr": result.stderr[-2000:] if result.stderr else "",
             "metrics": metrics,
@@ -369,24 +386,30 @@ async def enaqt_sweep(req: RunRequest):
         from experiment_1c_enaqt_ion_channel import compute_transport_efficiency
 
         params = req.params
-        n_points = int(params.get("n_points", 30))
+        # Clamp/validate so a single request cannot block the worker indefinitely.
+        n_points = max(2, min(int(params.get("n_points", 30)), 200))
         gamma_min = float(params.get("gamma_min", 0.01))
         gamma_max = float(params.get("gamma_max", 1e5))
+        if gamma_min <= 0 or gamma_max <= gamma_min:
+            raise HTTPException(422, "Require 0 < gamma_min < gamma_max")
         bridge_height = float(params.get("bridge_height_cm", 1500.0))
 
-        gammas = np.logspace(np.log10(gamma_min), np.log10(gamma_max), n_points)
-        site_energies = np.array([0.0, bridge_height, bridge_height, 0.0])
+        def _run_sweep():
+            gammas = np.logspace(np.log10(gamma_min), np.log10(gamma_max), n_points)
+            site_energies = np.array([0.0, bridge_height, bridge_height, 0.0])
+            out = []
+            for gamma in gammas:
+                eta, _, _, _ = compute_transport_efficiency(
+                    gamma, site_energies=site_energies)
+                out.append({
+                    "gamma_cm": round(float(gamma), 4),
+                    "efficiency": round(float(eta), 6),
+                })
+            return out
 
-        results = []
-        for gamma in gammas:
-            eta, _, _, _ = compute_transport_efficiency(
-                gamma, site_energies=site_energies)
-            results.append({
-                "gamma_cm": round(float(gamma), 4),
-                "efficiency": round(float(eta), 6),
-            })
+        # Offload the synchronous QuTiP sweep off the event loop.
+        results = await asyncio.to_thread(_run_sweep)
 
-        # Find peak
         etas = [r["efficiency"] for r in results]
         peak_idx = int(np.argmax(etas))
 
@@ -400,6 +423,8 @@ async def enaqt_sweep(req: RunRequest):
             },
         }
 
+    except HTTPException:
+        raise
     except ImportError as e:
         raise HTTPException(500, f"Import error: {str(e)}")
     except Exception as e:
@@ -418,70 +443,75 @@ async def reservoir_quick(req: RunRequest):
         from sklearn.metrics import r2_score
 
         params = req.params
-        n_reservoir = int(params.get("n_reservoir", 100))
-        spectral_radius = float(params.get("spectral_radius", 0.9))
-        p_release = float(params.get("p_release", 0.5))
-        leak_rate = float(params.get("leak_rate", 0.3))
-        n_steps = int(params.get("n_steps", 2000))
+        # Clamp inputs to prevent OOM / unbounded compute (eigvals is O(n^3)).
+        n_reservoir = max(1, min(int(params.get("n_reservoir", 100)), 500))
+        spectral_radius = max(0.0, min(float(params.get("spectral_radius", 0.9)), 2.0))
+        p_release = max(0.0, min(float(params.get("p_release", 0.5)), 1.0))
+        leak_rate = max(0.0, min(float(params.get("leak_rate", 0.3)), 1.0))
+        n_steps = max(100, min(int(params.get("n_steps", 2000)), 20000))
         seed = int(params.get("seed", 42))
 
-        rng = np.random.default_rng(seed)
+        def _run_esn():
+            rng = np.random.default_rng(seed)
 
-        # Create reservoir
-        W = rng.standard_normal((n_reservoir, n_reservoir))
-        mask = rng.random((n_reservoir, n_reservoir)) < 0.1
-        W *= mask
-        eigvals = np.linalg.eigvals(W)
-        max_eig = np.max(np.abs(eigvals))
-        if max_eig > 0:
-            W *= spectral_radius / max_eig
+            # Create reservoir
+            W = rng.standard_normal((n_reservoir, n_reservoir))
+            mask = rng.random((n_reservoir, n_reservoir)) < 0.1
+            W *= mask
+            eigvals = np.linalg.eigvals(W)
+            max_eig = np.max(np.abs(eigvals))
+            if max_eig > 0:
+                W *= spectral_radius / max_eig
 
-        W_in = rng.uniform(-1.5, 1.5, n_reservoir)
-        u = rng.uniform(0.0, 1.0, n_steps)
+            W_in = rng.uniform(-1.5, 1.5, n_reservoir)
+            u = rng.uniform(0.0, 1.0, n_steps)
 
-        # Run ESN
-        states = np.zeros((n_steps, n_reservoir))
-        x = np.zeros(n_reservoir)
-        W_nonzero = W != 0
+            # Run ESN
+            states = np.zeros((n_steps, n_reservoir))
+            x = np.zeros(n_reservoir)
+            W_nonzero = W != 0
 
-        for t in range(n_steps):
-            if p_release < 1.0:
-                release_mask = (rng.random(W.shape) < p_release) & W_nonzero
-                W_eff = np.where(release_mask, W, 0.0) / max(p_release, 1e-6)
-            else:
-                W_eff = W
-            pre = W_eff @ x + W_in * u[t]
-            x = (1 - leak_rate) * x + leak_rate * np.tanh(pre)
-            states[t] = x
+            for t in range(n_steps):
+                if p_release < 1.0:
+                    release_mask = (rng.random(W.shape) < p_release) & W_nonzero
+                    W_eff = np.where(release_mask, W, 0.0) / max(p_release, 1e-6)
+                else:
+                    W_eff = W
+                pre = W_eff @ x + W_in * u[t]
+                x = (1 - leak_rate) * x + leak_rate * np.tanh(pre)
+                states[t] = x
 
-        # Memory capacity
-        washout = 200
-        X = states[washout:]
-        u_w = u[washout:]
-        max_delay = 20
-        mc_per_delay = []
+            # Memory capacity
+            washout = 200
+            X = states[washout:]
+            u_w = u[washout:]
+            max_delay = 20
+            mc_per_delay = []
 
-        for k in range(1, max_delay + 1):
-            target = u_w[:-k]
-            X_k = X[k:]
-            min_len = min(len(target), len(X_k))
-            if min_len < 20:
-                mc_per_delay.append(0.0)
-                continue
-            target, X_k = target[:min_len], X_k[:min_len]
-            n_tr = int(min_len * 0.7)
-            model = Ridge(alpha=0.01)
-            model.fit(X_k[:n_tr], target[:n_tr])
-            r2 = r2_score(target[n_tr:], model.predict(X_k[n_tr:]))
-            mc_per_delay.append(max(0.0, round(float(r2), 4)))
+            for k in range(1, max_delay + 1):
+                target = u_w[:-k]
+                X_k = X[k:]
+                min_len = min(len(target), len(X_k))
+                if min_len < 20:
+                    mc_per_delay.append(0.0)
+                    continue
+                target, X_k = target[:min_len], X_k[:min_len]
+                n_tr = int(min_len * 0.7)
+                model = Ridge(alpha=0.01)
+                model.fit(X_k[:n_tr], target[:n_tr])
+                r2 = r2_score(target[n_tr:], model.predict(X_k[n_tr:]))
+                mc_per_delay.append(max(0.0, round(float(r2), 4)))
 
-        mc_total = sum(mc_per_delay)
+            return sum(mc_per_delay), mc_per_delay, round(float(np.mean(np.abs(X))), 4)
+
+        # Offload the CPU-bound NumPy/sklearn work off the event loop.
+        mc_total, mc_per_delay, mean_activation = await asyncio.to_thread(_run_esn)
 
         return {
             "status": "success",
             "mc_total": round(mc_total, 4),
             "mc_per_delay": mc_per_delay,
-            "mean_activation": round(float(np.mean(np.abs(X))), 4),
+            "mean_activation": mean_activation,
             "params": {
                 "n_reservoir": n_reservoir,
                 "spectral_radius": spectral_radius,

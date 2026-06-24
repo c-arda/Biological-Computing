@@ -304,7 +304,11 @@
     ],
     "mc_peak_gamma_cm": 1060.8184,
     "mc_peak_value": 0.9892,
-    "enaqt_peak_gamma_cm": 1060.8184
+    "enaqt_peak_gamma_cm": 1060.8184,
+    "rho_spearman": 0.9313,
+    "p_spearman": 2.978e-18,
+    "r_pearson": 0.9922,
+    "p_pearson": 5.567e-36
   },
   "elapsed_s": 59.5
 }

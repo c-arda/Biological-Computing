@@ -409,6 +409,11 @@ def main():
     enaqt_peak_idx = np.argmax(p4_sweep)
     enaqt_peak_gamma = gamma_sweep[enaqt_peak_idx]
 
+    # Correlation between transport efficiency (P₄) and memory capacity (MC)
+    from scipy.stats import spearmanr, pearsonr
+    rho_spearman, p_spearman = spearmanr(p4_sweep, mc_sweep)
+    r_pearson, p_pearson = pearsonr(p4_sweep, mc_sweep)
+
     # ═══════════════════════════════════════════════
     # RESULTS SUMMARY
     # ═══════════════════════════════════════════════
@@ -428,6 +433,8 @@ def main():
     print(f"  ENAQT peak: γ = {enaqt_peak_gamma:.1f} cm⁻¹  "
           f"(P₄ = {p4_sweep[enaqt_peak_idx]:.3f})")
     print(f"  Correlation: MC peak {'≈' if abs(np.log10(mc_peak_gamma/enaqt_peak_gamma)) < 0.5 else '≠'} ENAQT peak")
+    print(f"  Spearman ρ(P₄,MC) = {rho_spearman:.3f} (p = {p_spearman:.2e}); "
+          f"Pearson r = {r_pearson:.3f} (p = {p_pearson:.2e})")
     print(f"  Total elapsed: {elapsed_total:.1f}s")
     print(f"{'═' * 65}")
 
@@ -459,6 +466,10 @@ def main():
             'mc_peak_gamma_cm': round(mc_peak_gamma, 4),
             'mc_peak_value': round(mc_peak_val, 4),
             'enaqt_peak_gamma_cm': round(enaqt_peak_gamma, 4),
+            'rho_spearman': round(float(rho_spearman), 4),
+            'p_spearman': float(f'{p_spearman:.3e}'),
+            'r_pearson': round(float(r_pearson), 4),
+            'p_pearson': float(f'{p_pearson:.3e}'),
         },
         'elapsed_s': round(elapsed_total, 1),
     }

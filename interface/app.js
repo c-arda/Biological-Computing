@@ -103,10 +103,6 @@ function renderMain() {
       <div class="card" style="animation-delay:0.12s">
         <div class="card__header">
           <span class="card__title">Simulation Parameters</span>
-          <div class="toggle-wrap">
-            <span>Quick mode</span>
-            <div class="toggle active" id="quickToggle" onclick="toggleQuick()"></div>
-          </div>
         </div>
         <div class="params-grid">
           ${paramEntries.map(([key, p]) => `
@@ -123,8 +119,12 @@ function renderMain() {
             </div>
           `).join('')}
         </div>
+        <p class="param-note" style="font-size:11px;color:var(--text-muted);margin:10px 0 0">${exp.live
+          ? 'Quick Explore runs a fast in-process model with your parameters. Run Simulation re-executes the full canonical experiment (regenerates metrics &amp; dashboard).'
+          : 'Run Simulation re-executes the canonical experiment (regenerates metrics &amp; dashboard); sliders are the published reference values.'}</p>
         <div class="actions" style="margin-top:14px">
-          <button class="btn btn--primary" id="runBtn" onclick="runExperiment()">
+          ${exp.live ? `<button class="btn btn--primary" id="liveBtn" onclick="quickExplore()">⚡ Quick Explore</button>` : ''}
+          <button class="btn ${exp.live ? 'btn--secondary' : 'btn--primary'}" id="runBtn" onclick="runExperiment()">
             ▸ Run Simulation
           </button>
           <button class="btn btn--secondary" onclick="resetParams()">
@@ -184,11 +184,6 @@ function renderMain() {
 
 function updateParamDisplay(key, value) {
   document.getElementById(`pval-${key}`).textContent = value;
-}
-
-function toggleQuick() {
-  const toggle = document.getElementById('quickToggle');
-  toggle.classList.toggle('active');
 }
 
 function resetParams() {
@@ -279,15 +274,24 @@ function extractMetricCards(data) {
       { label: 'Proximity', value: body.proximity_to_peak?.split(' ')[0] || '—', unit: '' },
     );
   } else if (id === '1d') {
-    if (data.noise_comparison) {
-      for (const nc of data.noise_comparison) {
-        cards.push({
-          label: `MC (${nc.noise_type})`,
-          value: nc.mc_total?.toFixed(2),
-          unit: '',
-          colorClass: nc.noise_type === 'cauchy' ? 'metric-card--green' : '',
-        });
-      }
+    const conds = data.conditions || {};
+    for (const [name, c] of Object.entries(conds)) {
+      cards.push({
+        label: `MC (${name})`,
+        value: c.mc_total?.toFixed(2),
+        unit: '',
+        colorClass: name === 'Quantum' ? 'metric-card--green'
+          : (name === 'Classical' ? 'metric-card--amber' : ''),
+      });
+    }
+    const ns = data.noise_sweep || {};
+    if (ns.best_quantum) {
+      cards.push({ label: 'Best Quantum MC', value: ns.best_quantum.mc?.toFixed(2),
+        unit: `@amp ${ns.best_quantum.amplitude}`, colorClass: 'metric-card--green' });
+    }
+    if (ns.best_classical) {
+      cards.push({ label: 'Best Classical MC', value: ns.best_classical.mc?.toFixed(2),
+        unit: `@amp ${ns.best_classical.amplitude}` });
     }
   } else if (id === '1e') {
     const bridge = data.enaqt_bridge || {};
@@ -369,8 +373,74 @@ function renderInspector(data) {
   requestAnimationFrame(() => {
     if (activeExp?.id === '1e' && data.dephasing_sweep) {
       drawSweepChart(data.dephasing_sweep);
+    } else if (activeExp?.id === '1c' && data.temperature_mapping) {
+      drawEnaqtChart(data);
     }
   });
+}
+
+function drawEnaqtChart(data) {
+  const canvas = document.getElementById('enaqtCanvas');
+  if (!canvas) return;
+  const pts = (data.temperature_mapping || [])
+    .map(p => ({ g: p.gamma_cm, e: p.efficiency, T: p.temperature_K }))
+    .filter(p => p.g > 0)
+    .sort((a, b) => a.g - b.g);
+  if (!pts.length) return;
+
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * 2;
+  canvas.height = 360;
+  canvas.style.height = '180px';
+  const w = canvas.width, h = canvas.height;
+  const pad = { l: 64, r: 30, t: 26, b: 46 };
+
+  ctx.fillStyle = 'rgba(0,0,0,0.3)';
+  ctx.fillRect(0, 0, w, h);
+
+  const peakG = data.enaqt_peak?.optimal_dephasing_rate_cm;
+  const gs = pts.map(p => p.g).concat(peakG ? [peakG] : []);
+  const xMin = Math.log10(Math.min(...gs)), xMax = Math.log10(Math.max(...gs));
+  const span = (xMax - xMin) || 1;
+  const eMax = (Math.max(...pts.map(p => p.e)) || 1) * 1.2;
+  const toX = v => pad.l + (Math.log10(v) - xMin) / span * (w - pad.l - pad.r);
+  const toY = v => pad.t + (1 - v / eMax) * (h - pad.t - pad.b);
+
+  // ENAQT peak guide line
+  if (peakG) {
+    ctx.strokeStyle = 'rgba(10,255,239,0.4)';
+    ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); ctx.moveTo(toX(peakG), pad.t); ctx.lineTo(toX(peakG), h - pad.b); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Efficiency curve
+  ctx.beginPath();
+  ctx.strokeStyle = '#00d2ff';
+  ctx.lineWidth = 3;
+  pts.forEach((p, i) => { const x = toX(p.g), y = toY(p.e); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+  ctx.stroke();
+
+  // Temperature points + labels
+  ctx.font = '16px JetBrains Mono, monospace';
+  pts.forEach(p => {
+    const x = toX(p.g), y = toY(p.e);
+    ctx.fillStyle = '#0affef';
+    ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fillText(`${p.T}K`, x - 14, y - 12);
+  });
+
+  // Axis labels
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '18px IBM Plex Mono, monospace';
+  ctx.fillText('η transport', 8, pad.t - 8);
+  ctx.fillText('γ dephasing (cm⁻¹, log)', w / 2 - 110, h - 12);
+  if (peakG) {
+    ctx.fillStyle = 'rgba(10,255,239,0.7)';
+    ctx.fillText('ENAQT peak', toX(peakG) + 8, pad.t + 8);
+  }
 }
 
 function drawSweepChart(sweep) {
@@ -474,25 +544,32 @@ async function runExperiment() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ params, quick_mode: quickMode }),
     });
-    const result = await res.json();
 
     clearInterval(interval);
     if (fill) fill.style.width = '100%';
 
-    if (result.status === 'success') {
-      log(`Experiment ${activeExp.id} completed in ${result.elapsed_s}s`);
-      if (result.metrics) {
-        activeMetrics = result.metrics;
-        renderMetrics(result.metrics);
-        renderInspector(result.metrics);
-        document.getElementById('metricsStatus').textContent = `Completed (${result.elapsed_s}s)`;
-      }
-      // Reload image
-      const imgEl = document.querySelector('.dashboard-img');
-      if (imgEl) imgEl.src = `${API}/api/results/${activeExp.id}/image?t=${Date.now()}`;
-    } else {
-      log(`ERROR: ${result.stderr?.slice(0, 200) || 'Unknown error'}`);
+    if (!res.ok) {
+      // FastAPI HTTPException bodies carry {detail}, not {stderr}.
+      const err = await res.json().catch(() => ({}));
+      log(`ERROR ${res.status}: ${err.detail || res.statusText}`);
       document.getElementById('metricsStatus').textContent = 'Error';
+    } else {
+      const result = await res.json();
+      if (result.status === 'success') {
+        log(`Experiment ${activeExp.id} completed in ${result.elapsed_s}s`);
+        if (result.metrics && Object.keys(result.metrics).length) {
+          activeMetrics = result.metrics;
+          renderMetrics(result.metrics);
+          renderInspector(result.metrics);
+          document.getElementById('metricsStatus').textContent = `Completed (${result.elapsed_s}s)`;
+        }
+        // Reload image (cache-bust)
+        const imgEl = document.querySelector('.dashboard-img');
+        if (imgEl) imgEl.src = `${API}/api/results/${activeExp.id}/image?t=${Date.now()}`;
+      } else {
+        log(`ERROR: ${result.stderr?.slice(0, 200) || 'Experiment did not write fresh results'}`);
+        document.getElementById('metricsStatus').textContent = 'Error';
+      }
     }
   } catch (e) {
     clearInterval(interval);
@@ -502,6 +579,120 @@ async function runExperiment() {
   btn.disabled = false;
   btn.innerHTML = '▸ Run Simulation';
   setTimeout(() => { if (fill) fill.style.width = '0%'; }, 2000);
+}
+
+// ── Quick Explore (live lightweight endpoints) ──
+async function quickExplore() {
+  if (!activeExp || !activeExp.live) return;
+  const live = activeExp.live;
+  const btn = document.getElementById('liveBtn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Exploring...'; }
+
+  const payload = { params: {} };
+  for (const [sliderKey, apiKey] of Object.entries(live.map || {})) {
+    const slider = document.getElementById(`param-${sliderKey}`);
+    if (slider) payload.params[apiKey] = parseFloat(slider.value);
+  }
+
+  log(`Quick Explore: ${activeExp.id} → ${live.endpoint}`);
+  try {
+    const res = await fetch(`${API}${live.endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      log(`ERROR ${res.status}: ${e.detail || res.statusText}`);
+    } else {
+      const data = await res.json();
+      renderLiveResult(live.kind, data);
+      log(`Quick Explore complete (${activeExp.id})`);
+    }
+  } catch (e) {
+    log(`ERROR: ${e.message}`);
+  }
+  if (btn) { btn.disabled = false; btn.innerHTML = '⚡ Quick Explore'; }
+}
+
+function liveCardHTML(cards) {
+  return `<div class="metrics-grid">${cards.map(c => `
+    <div class="metric-card ${c.colorClass || ''}">
+      <span class="metric-card__label">${c.label}</span>
+      <span class="metric-card__value">${c.value ?? '—'}</span>
+      <span class="metric-card__unit">${c.unit || ''}</span>
+    </div>`).join('')}</div>`;
+}
+
+function renderLiveResult(kind, data) {
+  const el = document.getElementById('metricsContent');
+  const statusEl = document.getElementById('metricsStatus');
+  if (!el) return;
+
+  if (kind === 'sweep') {
+    const peak = data.peak || {};
+    const cards = [
+      { label: 'Peak γ (live)', value: peak.gamma_cm, unit: 'cm⁻¹', colorClass: 'metric-card--green' },
+      { label: 'Peak η (live)', value: (peak.efficiency ?? 0).toFixed(4), unit: '' },
+      { label: 'Sweep points', value: (data.sweep || []).length, unit: '' },
+    ];
+    el.innerHTML = liveCardHTML(cards) +
+      `<div class="chart-container" id="liveChart" style="min-height:200px"><canvas id="liveCanvas"></canvas></div>`;
+    if (statusEl) statusEl.textContent = 'Live sweep';
+    requestAnimationFrame(() => drawLiveSweep(data.sweep || [], peak));
+  } else if (kind === 'reservoir') {
+    const p = data.params || {};
+    const cards = [
+      { label: 'Memory Capacity', value: (data.mc_total ?? 0).toFixed(3), unit: '', colorClass: 'metric-card--green' },
+      { label: 'Mean activation', value: (data.mean_activation ?? 0).toFixed(3), unit: '' },
+      { label: 'Reservoir N', value: p.n_reservoir, unit: '' },
+      { label: 'Spectral ρ', value: p.spectral_radius, unit: '' },
+      { label: 'p_release', value: p.p_release, unit: '' },
+    ];
+    el.innerHTML = liveCardHTML(cards);
+    if (statusEl) statusEl.textContent = 'Live ESN';
+  }
+}
+
+function drawLiveSweep(sweep, peak) {
+  const canvas = document.getElementById('liveCanvas');
+  if (!canvas) return;
+  const pts = (sweep || []).map(s => ({ g: s.gamma_cm, e: s.efficiency })).filter(p => p.g > 0);
+  if (!pts.length) return;
+
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * 2;
+  canvas.height = 360;
+  canvas.style.height = '180px';
+  const w = canvas.width, h = canvas.height, pad = { l: 64, r: 30, t: 24, b: 46 };
+
+  ctx.fillStyle = 'rgba(0,0,0,0.3)';
+  ctx.fillRect(0, 0, w, h);
+
+  const xs = pts.map(p => Math.log10(p.g));
+  const xMin = Math.min(...xs), xMax = Math.max(...xs), span = (xMax - xMin) || 1;
+  const eMax = (Math.max(...pts.map(p => p.e)) || 1) * 1.15;
+  const toX = v => pad.l + (Math.log10(v) - xMin) / span * (w - pad.l - pad.r);
+  const toY = v => pad.t + (1 - v / eMax) * (h - pad.t - pad.b);
+
+  if (peak && peak.gamma_cm > 0) {
+    ctx.strokeStyle = 'rgba(10,255,239,0.4)';
+    ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); ctx.moveTo(toX(peak.gamma_cm), pad.t); ctx.lineTo(toX(peak.gamma_cm), h - pad.b); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  ctx.beginPath();
+  ctx.strokeStyle = '#00d2ff';
+  ctx.lineWidth = 3;
+  pts.forEach((p, i) => { const x = toX(p.g), y = toY(p.e); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+  ctx.stroke();
+
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '18px IBM Plex Mono, monospace';
+  ctx.fillText('η transport', 8, pad.t - 8);
+  ctx.fillText('γ dephasing (cm⁻¹, log)', w / 2 - 110, h - 12);
 }
 
 // ── Utility Functions ──

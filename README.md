@@ -2,7 +2,7 @@
 
 ![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white) ![BRIAN2](https://img.shields.io/badge/BRIAN2-2.x-4B8BBE) ![QuTiP](https://img.shields.io/badge/QuTiP-5.x-E34F26) ![License MIT](https://img.shields.io/badge/License-MIT-10b981) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19019549.svg)](https://doi.org/10.5281/zenodo.19019549)
 
-Computational investigation of whether quantum-mechanical effects—tunnelling delays, nuclear-spin coherence, and environment-assisted quantum transport (ENAQT)—can enhance neural computation. Eleven experiments across three phases trace a quantitative pathway from sub-molecular quantum dynamics to network-level computational capacity.
+Computational investigation of whether quantum-mechanical effects—tunnelling delays, nuclear-spin coherence, and environment-assisted quantum transport (ENAQT)—can enhance neural computation. Twelve experiments across three phases trace a quantitative pathway from sub-molecular quantum dynamics to network-level computational capacity.
 
 **Preprint:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19019549.svg)](https://doi.org/10.5281/zenodo.19019549) · [PDF](manuscript/manuscript.pdf)
 
@@ -10,7 +10,7 @@ Computational investigation of whether quantum-mechanical effects—tunnelling d
 
 ## Key Finding
 
-When the ENAQT transport efficiency of a model ion channel is used as the synaptic release probability in a reservoir computing network, the network's memory capacity **co-peaks** with the ENAQT curve (Spearman ρ = 0.99, *p* < 10⁻³⁴). Quantum-enhanced molecular transport directly translates into quantum-enhanced network computation.
+When the ENAQT transport efficiency of a model ion channel is used as the synaptic release probability in a reservoir computing network, the network's memory capacity **co-peaks** with the ENAQT curve — MC and ENAQT both peak at γ ≈ 1061 cm⁻¹ (Spearman ρ = 0.93, Pearson *r* = 0.99, *p* < 10⁻³⁵). Quantum-enhanced molecular transport directly translates into quantum-enhanced network computation.
 
 ---
 
@@ -21,7 +21,7 @@ When the ENAQT transport efficiency of a model ion channel is used as the synapt
 | **1a** | Quantum-modified synaptic delays | BRIAN2 | Rate +16%, CV_ISI −8% vs. classical fixed delays (faster tunnelling-mediated transmission) |
 | **1b** | Posner ³¹P spin dynamics | QuTiP | Coherence survives 346 µs at body temperature (310 K) |
 | **1c** | ENAQT in a model ion channel | QuTiP | ENAQT peak at γ ≈ 1145 cm⁻¹, 6.7× over coherent limit |
-| **1d** | Reservoir computing: quantum vs. classical noise | NumPy | Quantum (Cauchy) noise preserves MC 5.7× better at high amplitude |
+| **1d** | Reservoir computing: quantum vs. classical noise | NumPy | Cauchy (quantum) noise retains ~1.3× higher MC than Gaussian at σ=1.0 (0.59 vs. 0.47) |
 | **1e** | ENAQT-modulated reservoir computing | QuTiP + ESN | MC peak coincides with ENAQT peak across dephasing sweep |
 | **2a** | BNN reservoir computing baseline | CL SDK | Baseline MC ≈ 0.003 on Poisson simulator (64-channel BNN) |
 | **2b** | ENAQT-gated BNN reservoir | CL SDK | ENAQT gating reproduces stim-scaling on simulated BNN |
@@ -29,7 +29,7 @@ When the ENAQT transport efficiency of a model ion channel is used as the synapt
 | **2d** | Closed-loop spike-triggered ENAQT | CL SDK | Closed-loop feedback enhances MC only at ENAQT-optimal p_rel (Δ=+0.008) |
 | **2e** | Corrected ENAQT-gated BNN (donor–bridge–acceptor) | CL SDK | Re-run of 2b using physics-corrected ε=[0,15J,15J,0] landscape; ENAQT peak at γ ≈ 11J |
 | **3a** | D₂O isotope effect on ENAQT | QuTiP | D₂O reduces P₄ by 32.2% at 310 K; dose-response across D₂O/H₂O mixtures |
-| **3b** | Magnetic field modulation of Posner coherence | NumPy | Uniform B-field preserves singlet: ω_L/J = 345× but Δτ ≈ 0 (important null) |
+| **3b** | Magnetic field modulation of Posner coherence | NumPy | ω_L/J = 345×; 1 mT reduces ³¹P τc by 38.9% (250→153 ms) — B-field modulates coherence |
 
 ---
 
@@ -82,7 +82,7 @@ python experiment_1d_reservoir_noise.py
 python experiment_1e_enaqt_reservoir.py
 ```
 
-**Dependencies:** Python 3.11+, BRIAN2, QuTiP, NumPy, SciPy, Matplotlib, CL SDK (`pip install cl-sdk`)
+**Dependencies:** Python 3.11+, BRIAN2, QuTiP, NumPy, SciPy, Matplotlib, scikit-learn, CL SDK (`pip install cl-sdk`)
 
 ---
 
