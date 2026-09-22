@@ -75,7 +75,8 @@ neural_surrogates/
 docs/
 simulations/worker_research/
 PROJECT_REVIEW.md
-simulations/results/
+simulations/results/*
+!simulations/results/enaqt_extended_sweep.json
 notes/
 *.bak*
 

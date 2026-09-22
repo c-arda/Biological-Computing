@@ -10,7 +10,7 @@ Computational investigation of whether quantum-mechanical effects—tunnelling d
 
 ## Key Finding
 
-When the ENAQT transport efficiency of a model ion channel is used as the synaptic release probability in a reservoir computing network, the network's memory capacity **co-peaks** with the ENAQT curve — MC and ENAQT both peak at γ ≈ 1061 cm⁻¹ (Spearman ρ = 0.93, Pearson *r* = 0.99, *p* < 10⁻³⁵). Quantum-enhanced molecular transport directly translates into quantum-enhanced network computation.
+When the ENAQT transport efficiency of a model ion channel is used as the synaptic release probability in a reservoir computing network, the network's memory capacity **co-peaks** with the ENAQT curve — MC and ENAQT both peak at γ ≈ 1061 cm⁻¹ across a 40-point γ sweep (Spearman ρ = 0.93, *p* ≈ 3×10⁻¹⁸; Pearson *r* = 0.99, *p* < 10⁻³⁵). Quantum-enhanced molecular transport directly translates into quantum-enhanced network computation.
 
 ---
 
@@ -46,6 +46,7 @@ When the ENAQT transport efficiency of a model ion channel is used as the synapt
 │   ├── experiment_1b_posner_spins.py
 │   ├── experiment_1c_enaqt_ion_channel.py
 │   ├── experiment_1c_gpu.py                  # GPU-accelerated Lindblad sweep
+│   ├── experiment_1c_extended_sweep.py       # exact chain-length/bridge-height sweep
 │   ├── experiment_1d_reservoir_noise.py
 │   ├── experiment_1e_enaqt_reservoir.py
 │   ├── experiment_2a_bnn_reservoir.py
