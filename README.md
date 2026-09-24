@@ -4,7 +4,7 @@
 
 Computational investigation of whether quantum-mechanical effects—tunnelling delays, nuclear-spin coherence, and environment-assisted quantum transport (ENAQT)—can enhance neural computation. Twelve experiments across three phases trace a quantitative pathway from sub-molecular quantum dynamics to network-level computational capacity.
 
-**Preprint:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19019549.svg)](https://doi.org/10.5281/zenodo.19019549) · [PDF](manuscript/manuscript.pdf)
+**Preprint:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19019549.svg)](https://doi.org/10.5281/zenodo.19019549)
 
 ---
 
